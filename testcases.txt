@@ -1,0 +1,136 @@
+// Formula: (x1 ∨ x2 ∨ x3) ∧ (¬x1 ∨ ¬x2 ∨ x4) ∧ (x2 ∨ ¬x3 ∨ ¬x4) ∧ (¬x1 ∨ x3 ∨ ¬x4) ∧ (x1 ∨ ¬x2 ∨ ¬x3 ∨ x4)
+vector<vector<int>> clauses = {
+    {1, 2, 3},
+    {-1, -2, 4},
+    {2, -3, -4},
+    {-1, 3, -4},
+    {1, -2, -3, 4}
+};
+int numVars = 4;  // 4 variables: x1, x2, x3, x4
+SAT
+
+
+// Formula: (x1 ∨ x2) ∧ (¬x1 ∨ x2) ∧ (x1 ∨ ¬x2) ∧ (¬x1 ∨ ¬x2)
+// This formula is a contradiction and is unsatisfiable.
+vector<vector<int>> clauses = {
+    {1, 2},
+    {-1, 2},
+    {1, -2},
+    {-1, -2}
+};
+int numVars = 2;  // 2 variables: x1, x2
+UNSAT
+
+
+// Formula: (x1 ∨ x2 ∨ x3) ∧ (¬x1 ∨ ¬x2) ∧ (¬x2 ∨ ¬x3) ∧ (x4 ∨ ¬x1) ∧ (¬x4 ∨ x1 ∨ x2 ∨ x3)
+// Larger formula with mixed positive and negative literals.
+vector<vector<int>> clauses = {
+    {1, 2, 3},
+    {-1, -2},
+    {-2, -3},
+    {4, -1},
+    {-4, 1, 2, 3}
+};
+int numVars = 4;  // 4 variables: x1, x2, x3, x4
+SAT
+
+
+// Formula: (x1 ∨ ¬x2 ∨ x3) ∧ (¬x1 ∨ x2 ∨ ¬x4) ∧ (x2 ∨ ¬x3 ∨ x4) ∧ (x3 ∨ x4 ∨ ¬x5) ∧ (¬x3 ∨ ¬x4 ∨ x5) ∧ (x5 ∨ ¬x6) ∧ (¬x1 ∨ ¬x5 ∨ x6)
+vector<vector<int>> clauses = {
+    {1, -2, 3},
+    {-1, 2, -4},
+    {2, -3, 4},
+    {3, 4, -5},
+    {-3, -4, 5},
+    {5, -6},
+    {-1, -5, 6}
+};
+int numVars = 6;  // 6 variables: x1, x2, x3, x4, x5, x6
+SAT
+
+
+// Formula: (x1 ∨ x2 ∨ x3 ∨ x4 ∨ x5) ∧ (¬x1 ∨ ¬x2 ∨ ¬x3 ∨ ¬x4 ∨ ¬x5)
+// This formula is satisfiable by either all True or all False assignments for variables.
+vector<vector<int>> clauses = {
+    {1, 2, 3, 4, 5},
+    {-1, -2, -3, -4, -5}
+};
+int numVars = 5;  // 5 variables: x1, x2, x3, x4, x5
+SAT
+
+
+// Formula: (¬x1 ∨ x2 ∨ x3) ∧ (¬x2 ∨ x4 ∨ x5) ∧ (¬x3 ∨ x6 ∨ x7) ∧ (¬x4 ∨ x8 ∨ x9) ∧ (¬x5 ∨ x10 ∨ x1)
+vector<vector<int>> clauses = {
+    {-1, 2, 3},
+    {-2, 4, 5},
+    {-3, 6, 7},
+    {-4, 8, 9},
+    {-5, 10, 1}
+};
+int numVars = 10;  // 10 variables: x1 to x10
+SAT
+
+
+// Formula: (x1 ∨ x2 ∨ ¬x3) ∧ (¬x1 ∨ ¬x2) ∧ (x3 ∨ x4) ∧ (¬x3 ∨ ¬x4) ∧ (¬x1 ∨ x2 ∨ x3 ∨ x4) ∧ (x1 ∨ ¬x2 ∨ ¬x3 ∨ ¬x4)
+// This is a contradictory formula.
+vector<vector<int>> clauses = {
+    {1, 2, -3},
+    {-1, -2},
+    {3, 4},
+    {-3, -4},
+    {-1, 2, 3, 4},
+    {1, -2, -3, -4}
+};
+int numVars = 4;  // 4 variables: x1, x2, x3, x4
+SAT
+
+
+// Formula: Random large CNF with 8 variables and multiple clauses
+vector<vector<int>> clauses = {
+    {1, 2, 3},
+    {-1, 4, 5},
+    {-2, 3, 6},
+    {7, 8, -3},
+    {1, -4, -7},
+    {-5, 2, 6},
+    {8, -6, 4},
+    {3, -5, -1}
+};
+int numVars = 8;  // 8 variables: x1 to x8
+SAT
+
+
+// This is a famous unsatisfiable formula based on the pigeonhole principle (Pigeonhole problem with 3 holes and 4 pigeons)
+vector<vector<int>> clauses = {
+    {1, 2, 3},
+    {-1, -2},
+    {-1, -3},
+    {-2, -3},
+    {4, 5, 6},
+    {-4, -5},
+    {-4, -6},
+    {-5, -6},
+    {7, 8, 9},
+    {-7, -8},
+    {-7, -9},
+    {-8, -9},
+    {-1, -4, -7},
+    {-2, -5, -8},
+    {-3, -6, -9}
+};
+int numVars = 9;  // 9 variables, representing 4 pigeons and 3 holes
+UNSAT
+
+
+// Formula: (x1 XOR x2) AND (x2 XOR x3) AND (x3 XOR x1)
+// Represented in CNF as: (x1 ∨ x2) ∧ (¬x1 ∨ ¬x2) ∧ (x2 ∨ x3) ∧ (¬x2 ∨ ¬x3) ∧ (x3 ∨ x1) ∧ (¬x3 ∨ ¬x1)
+vector<vector<int>> clauses = {
+    {1, 2},
+    {-1, -2},
+    {2, 3},
+    {-2, -3},
+    {3, 1},
+    {-3, -1}
+};
+int numVars = 3;  // 3 variables: x1, x2, x3
+UNSAT
